@@ -21,6 +21,7 @@ import { Button } from "../ui/button";
 import { QuestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
 
@@ -39,12 +40,14 @@ const Question = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setisSubmitting(true);
     try {
       // make an async call to your API -> Create a question
       // contain all  form data
-      // navigate to home page
+      await createQuestion({});
+
+      // navigate to home
     } catch (error) {
     } finally {
       setisSubmitting(false);
@@ -146,6 +149,8 @@ const Question = () => {
                       ),
                   }}
                   initialValue=""
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                 />
               </FormControl>
 
