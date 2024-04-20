@@ -1,7 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import React from "react";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk as spaceGrotesk1 } from "next/font/google";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/context/Themeprovider";
 
@@ -10,7 +10,7 @@ const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
 });
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = spaceGrotesk1({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-spaceGrotesk",
