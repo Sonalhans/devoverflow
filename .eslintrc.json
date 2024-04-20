@@ -4,5 +4,8 @@
     "standard",
     "plugin:tailwindcss/recommended",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "camelcase": [2, { "properties": "never" }]
+  }
 }
