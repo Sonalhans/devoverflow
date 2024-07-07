@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormControl,
@@ -17,9 +17,8 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 
 const Answer = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting] = useState(false);
   const { mode } = useTheme();
-  const editorRef = useRef(null);
   const form = useForm<z.infer<typeof AnswerSchema>>({
     resolver: zodResolver(AnswerSchema),
     defaultValues: {
@@ -27,10 +26,7 @@ const Answer = () => {
     },
   });
 
-  function handleCreateSubmit(
-    data: { answer: string },
-    event?: BaseSyntheticEvent<object, any, any> | undefined
-  ): unknown {
+  function handleCreateSubmit(data: { answer: string }): unknown {
     throw new Error("Function not implemented.");
   }
 
