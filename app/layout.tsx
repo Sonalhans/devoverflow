@@ -1,5 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import "../styles/prism.css";
+
 import React from "react";
 import { Inter, Space_Grotesk as spaceGrotesk1 } from "next/font/google";
 import type { Metadata } from "next";
