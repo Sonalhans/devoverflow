@@ -23,12 +23,14 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
+import { useTheme } from "@/context/Themeprovider";
 
 const type: any = "create";
 interface Props {
   mongoUserId: string;
 }
 const Question = ({ mongoUserId }: Props) => {
+  const { mode } = useTheme();
   const [isSubmitting, setisSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -144,15 +146,17 @@ const Question = ({ mongoUserId }: Props) => {
                     height: 350,
                     menubar: false,
                     plugins:
-                      "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount       linkchecker                 ",
+                      "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount codesample       linkchecker                 ",
                     toolbar:
-                      "undo redo |fontsize | bold italic underline strikethrough |  align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+                      "undo redo |fontsize | bold italic underline strikethrough |  align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat codesample",
                     tinycomments_mode: "embedded",
                     tinycomments_author: "Author name",
                     mergetags_list: [
                       { value: "First.Name", title: "First Name" },
                       { value: "Email", title: "Email" },
                     ],
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                   initialValue=""
                   onBlur={field.onBlur}
